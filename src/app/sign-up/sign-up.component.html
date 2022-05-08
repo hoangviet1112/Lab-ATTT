@@ -1,0 +1,33 @@
+<form style="width: 100%;" [formGroup]="loginForm" *ngIf="step === 1">
+  <label for="fname">Id:</label><br>
+  <input type="text" id="a" name="fname" formControlName="id"><br>
+  <label for="lname">Password:</label><br>
+  <input type="password" id="b" name="lname" formControlName="password"><br>
+
+  <div style="display: flex; margin-top: 10px;">
+    <button (click)="login()" style="margin-right: 10px;">login</button>
+    <button (click)="selectSignup()">Sign Up</button>
+  </div>
+</form>
+
+
+<form style="width: 100%;" [formGroup]="signUpForm" *ngIf="step === 2">
+  <label for="fname">Id:</label><br>
+  <input type="text" id="a" name="fname" formControlName="id"><br>
+
+  <label for="fname">User Name:</label><br>
+  <input type="text" id="a" name="fname" formControlName="userName"><br>
+
+  <label for="lname">Password:</label><br>
+  <input type="password" id="b" name="lname" formControlName="password"><br>
+
+  <div style="display: flex; margin-top: 10px;">
+    <button (click)="submitSignup()" style="margin-right: 10px;">Sign Up</button>
+    <button (click)="cancelSignUp()">Cancel</button>
+  </div>
+</form>
+
+<div *ngIf="step === 3">
+  <div>{{jsonData |  json}}</div>
+  <button (click)="logout()">Log out</button>
+</div>

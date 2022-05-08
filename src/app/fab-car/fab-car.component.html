@@ -1,0 +1,37 @@
+<div>
+  <button (click)="getData()">GET DATA</button>
+
+  <div class="data-container" style="margin-top: 30px;">
+    <table style="flex: 1;">
+      <tr>
+        <th>key</th>
+        <th>colour</th>
+        <th>make</th>
+        <th>model</th>
+        <th>owner</th>
+      </tr>
+      <tr *ngFor="let item of mockData" (click)="selectItem(item)">
+        <td>{{item.Key}}</td>
+        <td>{{item.Record.colour}}</td>
+        <td>{{item.Record.make}}</td>
+        <td>{{item.Record.model}}</td>
+        <td>{{item.Record.owner}}</td>
+      </tr>
+    </table>
+
+    <div style="flex: 1; margin-left: 20px;">
+      <form style="width: 100%;" [formGroup]="mainForm" *ngIf="selectedItem">
+        <label for="fname">Colour:</label><br>
+        <input type="text" id="a" name="fname" formControlName="colour"><br>
+        <label for="lname">Make:</label><br>
+        <input type="text" id="b" name="lname" formControlName="make"><br>
+        <label for="lname">Model:</label><br>
+        <input type="text" id="c" name="lname" formControlName="model"><br>
+        <label for="lname">Owner:</label><br>
+        <input type="text" id="d" name="lname" formControlName="owner"><br><br>
+        <button (click)="submit()">submit</button>
+      </form> 
+    </div>
+  </div>
+  
+</div>
