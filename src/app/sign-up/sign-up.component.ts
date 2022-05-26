@@ -22,7 +22,7 @@ export class SignUpComponent implements OnInit {
   })
 
   x = 'string';
-  data;
+  data: any;
   constructor(
     public http: HttpClient,
 
