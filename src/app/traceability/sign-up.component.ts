@@ -21,8 +21,9 @@ export class SignUpComponent implements OnInit {
     password: new FormControl(),
   })
 
-  x = 'string';
+  x: string = '';
   data: any;
+  sourceData: any;
   constructor(
     public http: HttpClient,
 
@@ -45,7 +46,8 @@ export class SignUpComponent implements OnInit {
     this.http.post('http://192.168.230.134/api/v1/asset/login', {
       id: this.accessForm.get('id')?.value,
       password: this.accessForm.get('password')?.value
-    }).subscribe(() => {
+    }).subscribe((res) => {
+      this.data = res
       this.step = 1;
       this.resetForm();
     })
@@ -55,6 +57,13 @@ export class SignUpComponent implements OnInit {
     this.step = 2;
   }
 
+  showSourceAsset() {
+    this.http.post('http://192.168.230.134:5000/api/v1/asset/set-intermediary', {})
+      .subscribe((res) => {
+        this.data = res
+      })
+  }
+
   submitCreateAsset() {
     this.http.post('http://192.168.230.134:5000/api/v1/asset', {
       id: this.createForm.get('id')?.value,
@@ -62,14 +71,13 @@ export class SignUpComponent implements OnInit {
       password: this.createForm.get('password')?.value
     }).subscribe((res) => {
       this.data = res
-      this.step = 1;
-      this.resetForm();
     }, (error) => {
       console.log(error);
       this.x = error.error.error
     })
-    
   }
+
+  
 
   cancelCreateAsset() {
     this.step = 1;

@@ -18,11 +18,12 @@
 
   <div style="display: flex; margin-top: 10px;">
     <button (click)="submitCreateAsset()" style="margin-right: 10px;">Create Asset</button>
-    <button (click)="cancelCreateAsset()">Cancel</button>
-    <span>{{x}}</span>
-    <div>
-      {{data?.data?.name}}
-    </div>
+    <button (click)="cancelCreateAsset()">Cancel</button><br>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <span>Id: {{data?.data?.id}}</span>
+    <span>User Name: {{data?.data?.name}}</span>
+    <span>Created at: {{data?.data?.createdAt}}</span>
   </div>
 </form>
 
@@ -34,6 +35,11 @@
   <div style="display: flex; margin-top: 10px;">
     <button (click)="submitAccessAsset()" style="margin-right: 10px;">Access Asset</button>
     <button (click)="cancelAccessAsset()">Cancel</button>
+  </div>
+  <div style="display: flex; flex-direction: column;">
+    <span>Id: {{data?.data?.id}}</span>
+    <span>User Name: {{data?.data?.name}}</span>
+    <span>Created at: {{data?.data?.createdAt}}</span>
   </div>
 </form>
 
